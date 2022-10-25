@@ -34,8 +34,8 @@ async function removeContact(contactId) {
     const contactById = parsedData.find(contact => contact.id === contactId);
     if(!contactById) {return null}
     const newData = parsedData.filter(contact => contact.id !== contactId);
-    console.table(newData);
     fs.writeFile(contactsPath, JSON.stringify(newData));
+    console.table(newData);
   } catch (error) {
     console.error(error);
   }
@@ -47,8 +47,8 @@ async function addContact(name, email, phone) {
     const parsedData = JSON.parse(data);
     const id = uuidv4();
     parsedData.push({ id, name, email, phone });
-    console.table(parsedData);
     fs.writeFile(contactsPath, JSON.stringify(parsedData));
+    console.table(parsedData);
   } catch (error) {
     console.error(error);
   }
